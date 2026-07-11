@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kalai Selvan — Computer Science Student & Freelance Digital Creator</title>
+<meta name="description" content="Kalai Selvan — Computer Science Engineering student and freelance digital creator specializing in video editing, graphic design, and digital marketing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --bg:#0a0b16;
+  --bg-2:#10122199;
+  --panel:rgba(255,255,255,0.045);
+  --panel-border:rgba(255,255,255,0.09);
+  --text:#f1f1f8;
+  --muted:#9a9db5;
+  --indigo:#6366f1;
+  --violet:#a855f7;
+  --fuchsia:#ec4899;
+  --grad: linear-gradient(120deg,var(--indigo),var(--violet) 55%,var(--fuchsia));
+  --mono:'JetBrains Mono', monospace;
+  --display:'Space Grotesk', sans-serif;
+  --body:'Inter', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--body);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(99,102,241,0.16), transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(168,85,247,0.14), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(236,72,153,0.10), transparent 45%);
+  z-index:-2;
+  pointer-events:none;
+}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;}
+img{max-width:100%;display:block;}
+section{position:relative;padding:120px 8vw;}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:var(--mono);
+  font-size:0.78rem;
+  color:var(--violet);
+  letter-spacing:0.06em;
+  background:var(--panel);
+  border:1px solid var(--panel-border);
+  padding:6px 14px;
+  border-radius:999px;
+  margin-bottom:22px;
+}
+.eyebrow::before{content:'//';opacity:0.7;}
+h1,h2,h3{font-family:var(--display);letter-spacing:-0.02em;}
+.section-title{
+  font-size:clamp(1.9rem,4vw,3rem);
+  font-weight:700;
+  margin-bottom:14px;
+}
+.section-sub{
+  color:var(--muted);
+  max-width:560px;
+  font-size:1.02rem;
+  margin-bottom:56px;
+}
+.gradient-text{
+  background:var(--grad);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+/* ---------- NAV ---------- */
+nav{
+  position:fixed;top:20px;left:50%;transform:translateX(-50%);
+  z-index:1000;
+  display:flex;align-items:center;gap:4px;
+  background:rgba(14,15,28,0.72);
+  backdrop-filter:blur(16px);
+  border:1px solid var(--panel-border);
+  padding:8px;border-radius:999px;
+  box-shadow:0 10px 40px rgba(0,0,0,0.35);
+}
+nav a{
+  padding:9px 18px;border-radius:999px;
+  font-size:0.88rem;font-weight:500;color:var(--muted);
+  transition:all .25s ease;
+  white-space:nowrap;
+}
+nav a:hover{color:var(--text);}
+nav a.active{
+  background:var(--grad);color:#fff;
+}
+.nav-toggle{display:none;}
+
+/* ---------- HERO ---------- */
+.hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-top:140px;
+  position:relative;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1.2fr 0.9fr;gap:60px;align-items:center;
+}
+.hero-name{
+  font-size:clamp(3rem,7vw,5.4rem);
+  font-weight:700;line-height:1.02;
+  margin-bottom:20px;
+}
+.hero-tagline{
+  font-family:var(--mono);
+  font-size:clamp(0.85rem,1.4vw,1.05rem);
+  color:var(--muted);
+  margin-bottom:26px;
+}
+.hero-tagline .cursor{
+  display:inline-block;width:9px;height:1.1em;background:var(--violet);
+  vertical-align:text-bottom;margin-left:2px;
+  animation:blink 1s steps(2) infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+.hero-desc{color:var(--muted);max-width:480px;margin-bottom:34px;}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:38px;}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  padding:14px 28px;border-radius:12px;
+  font-weight:600;font-size:0.95rem;
+  cursor:pointer;border:none;
+  transition:transform .25s ease, box-shadow .25s ease;
+  position:relative;overflow:hidden;
+}
+.btn-primary{
+  background:var(--grad);color:#fff;
+  box-shadow:0 8px 30px rgba(168,85,247,0.35);
+}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(168,85,247,0.5);}
+.btn-primary::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.35),transparent);
+  transform:translateX(-120%);
+}
+.btn-primary:hover::after{transform:translateX(120%);transition:transform .7s ease;}
+.btn-ghost{
+  background:var(--panel);color:var(--text);
+  border:1px solid var(--panel-border);
+}
+.btn-ghost:hover{transform:translateY(-3px);background:rgba(255,255,255,0.08);}
+.socials{display:flex;gap:14px;}
+.socials a{
+  width:44px;height:44px;border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--panel);border:1px solid var(--panel-border);
+  color:var(--muted);transition:all .25s ease;
+}
+.socials a:hover{color:#fff;border-color:var(--violet);transform:translateY(-3px);}
+
+/* terminal card - signature element */
+.terminal{
+  background:rgba(15,16,30,0.85);
+  border:1px solid var(--panel-border);
+  border-radius:16px;
+  backdrop-filter:blur(20px);
+  box-shadow:0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+  overflow:hidden;
+  animation:float 6s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.terminal-bar{
+  display:flex;align-items:center;gap:8px;
+  padding:14px 18px;background:rgba(255,255,255,0.03);
+  border-bottom:1px solid var(--panel-border);
+}
+.dot{width:11px;height:11px;border-radius:50%;}
+.dot.r{background:#ff5f57;} .dot.y{background:#febc2e;} .dot.g{background:#28c840;}
+.terminal-title{margin-left:8px;font-family:var(--mono);font-size:0.75rem;color:var(--muted);}
+.terminal-body{padding:22px;font-family:var(--mono);font-size:0.86rem;}
+.terminal-body .ln{color:var(--muted);margin-bottom:6px;}
+.terminal-body .key{color:#7dd3fc;}
+.terminal-body .str{color:#fbbf24;}
+.terminal-body .role{color:var(--text);margin-left:16px;}
+.terminal-body .comment{color:#6b7280;}
+.terminal-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-top:1px solid var(--panel-border);
+}
+.terminal-stats div{
+  padding:16px 22px;border-right:1px solid var(--panel-border);
+}
+.terminal-stats div:last-child{border-right:none;}
+.terminal-stats .num{font-family:var(--display);font-size:1.4rem;font-weight:700;}
+.terminal-stats .lbl{font-size:0.72rem;color:var(--muted);font-family:var(--mono);}
+
+/* ---------- ABOUT ---------- */
+.about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:60px;align-items:center;}
+.about-photo{
+  aspect-ratio:4/5;border-radius:20px;
+  background:linear-gradient(160deg, rgba(99,102,241,0.25), rgba(236,72,153,0.2));
+  border:1px solid var(--panel-border);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.about-photo i{font-size:6rem;color:rgba(255,255,255,0.25);}
+.stat-chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;}
+.chip{
+  padding:10px 18px;border-radius:12px;
+  background:var(--panel);border:1px solid var(--panel-border);
+  font-size:0.85rem;color:var(--muted);
+  font-family:var(--mono);
+}
+.chip strong{color:var(--text);}
+
+/* ---------- SKILLS ---------- */
+.skills-cols{display:grid;grid-template-columns:1fr 1fr;gap:50px;}
+.skill-cat h3{font-size:1.1rem;margin-bottom:24px;color:var(--text);}
+.skill-item{margin-bottom:20px;}
+.skill-head{display:flex;justify-content:space-between;font-size:0.9rem;margin-bottom:8px;}
+.skill-head span:last-child{color:var(--muted);font-family:var(--mono);font-size:0.78rem;}
+.bar-track{height:8px;border-radius:999px;background:rgba(255,255,255,0.06);overflow:hidden;}
+.bar-fill{
+  height:100%;border-radius:999px;background:var(--grad);
+  width:0%;transition:width 1.4s cubic-bezier(.16,1,.3,1);
+}
+
+/* ---------- SERVICES ---------- */
+.card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.glass-card{
+  background:var(--panel);border:1px solid var(--panel-border);
+  border-radius:16px;padding:28px 22px;
+  backdrop-filter:blur(14px);
+  transition:transform .3s ease, border-color .3s ease, background .3s ease;
+}
+.glass-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(168,85,247,0.4);
+  background:rgba(255,255,255,0.065);
+}
+.card-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--grad);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;margin-bottom:18px;
+}
+.glass-card h4{font-size:1rem;margin-bottom:8px;}
+.glass-card p{font-size:0.85rem;color:var(--muted);}
+
+/* ---------- PROJECTS ---------- */
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+.proj-card{
+  background:var(--panel);border:1px solid var(--panel-border);
+  border-radius:18px;padding:30px;
+  display:flex;gap:18px;align-items:flex-start;
+  transition:transform .3s ease, border-color .3s ease;
+}
+.proj-card:hover{transform:translateY(-5px);border-color:rgba(99,102,241,0.4);}
+.proj-num{
+  font-family:var(--mono);font-size:0.95rem;color:var(--violet);
+  min-width:34px;
+}
+.proj-card h4{font-size:1rem;margin-bottom:6px;}
+.proj-card p{font-size:0.86rem;color:var(--muted);}
+
+/* ---------- TIMELINE ---------- */
+.timeline{position:relative;max-width:720px;margin:0 auto;}
+.timeline::before{
+  content:'';position:absolute;left:11px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(var(--indigo),var(--fuchsia));
+}
+.tl-item{position:relative;padding-left:46px;margin-bottom:38px;}
+.tl-item:last-child{margin-bottom:0;}
+.tl-dot{
+  position:absolute;left:0;top:2px;width:24px;height:24px;border-radius:50%;
+  background:var(--bg);border:2px solid var(--violet);
+  display:flex;align-items:center;justify-content:center;
+}
+.tl-dot::after{content:'';width:8px;height:8px;border-radius:50%;background:var(--grad);}
+.tl-item p{color:var(--muted);font-size:0.92rem;}
+
+/* ---------- TOOLS ---------- */
+.tools-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+.tool-item{
+  background:var(--panel);border:1px solid var(--panel-border);
+  border-radius:14px;padding:24px 16px;text-align:center;
+  transition:transform .3s ease, border-color .3s ease;
+}
+.tool-item:hover{transform:translateY(-4px);border-color:rgba(236,72,153,0.4);}
+.tool-item i{font-size:1.6rem;margin-bottom:10px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.tool-item span{display:block;font-size:0.82rem;color:var(--muted);}
+
+/* ---------- WHY HIRE ---------- */
+.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.why-item{
+  display:flex;align-items:center;gap:14px;
+  background:var(--panel);border:1px solid var(--panel-border);
+  border-radius:14px;padding:20px;
+}
+.why-item i{color:#34d399;font-size:1.1rem;}
+.why-item span{font-size:0.92rem;}
+
+/* ---------- TESTIMONIALS ---------- */
+.testi-wrap{max-width:760px;margin:0 auto;position:relative;}
+.testi-card{
+  background:var(--panel);border:1px solid var(--panel-border);
+  border-radius:20px;padding:44px;
+  backdrop-filter:blur(14px);
+  display:none;
+}
+.testi-card.active{display:block;animation:fadeIn .5s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.testi-quote{font-size:1.15rem;color:var(--text);margin-bottom:24px;}
+.testi-quote i{color:var(--violet);margin-right:8px;}
+.testi-person{display:flex;align-items:center;gap:14px;}
+.testi-avatar{
+  width:48px;height:48px;border-radius:50%;background:var(--grad);
+  display:flex;align-items:center;justify-content:center;font-weight:700;
+}
+.testi-person strong{display:block;font-size:0.95rem;}
+.testi-person span{font-size:0.8rem;color:var(--muted);}
+.testi-nav{display:flex;justify-content:center;gap:12px;margin-top:24px;}
+.testi-nav button{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--panel);border:1px solid var(--panel-border);color:var(--text);
+  cursor:pointer;font-size:0.9rem;
+  transition:all .25s ease;
+}
+.testi-nav button:hover{background:var(--grad);border-color:transparent;}
+
+/* ---------- CONTACT ---------- */
+.contact-wrap{
+  border-radius:28px;
+  background:linear-gradient(160deg, rgba(99,102,241,0.14), rgba(236,72,153,0.10));
+  border:1px solid var(--panel-border);
+  padding:64px 6vw;
+  display:grid;grid-template-columns:1fr 1fr;gap:60px;
+}
+.contact-info h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:16px;}
+.contact-info p{color:var(--muted);margin-bottom:28px;max-width:400px;}
+.contact-detail{display:flex;align-items:center;gap:12px;margin-bottom:16px;font-size:0.92rem;}
+.contact-detail i{color:var(--violet);width:20px;}
+form{display:flex;flex-direction:column;gap:16px;}
+.field{
+  background:rgba(255,255,255,0.04);border:1px solid var(--panel-border);
+  border-radius:12px;padding:14px 16px;color:var(--text);font-family:var(--body);
+  font-size:0.92rem;
+}
+.field:focus{outline:none;border-color:var(--violet);}
+textarea.field{resize:vertical;min-height:110px;}
+form .btn-primary{align-self:flex-start;}
+
+/* ---------- FOOTER ---------- */
+footer{padding:50px 8vw;border-top:1px solid var(--panel-border);}
+.footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+.footer-logo{font-family:var(--display);font-weight:700;font-size:1.2rem;}
+.footer-links{display:flex;gap:24px;flex-wrap:wrap;}
+.footer-links a{color:var(--muted);font-size:0.88rem;transition:color .2s;}
+.footer-links a:hover{color:var(--text);}
+.back-top{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--panel);border:1px solid var(--panel-border);
+  display:flex;align-items:center;justify-content:center;color:var(--text);
+  transition:all .25s ease;
+}
+.back-top:hover{background:var(--grad);border-color:transparent;transform:translateY(-3px);}
+.copyright{margin-top:24px;font-size:0.78rem;color:var(--muted);text-align:center;}
+
+/* ---------- SCROLL REVEAL ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:980px){
+  .hero-grid,.about-grid,.contact-wrap{grid-template-columns:1fr;}
+  .skills-cols{grid-template-columns:1fr;}
+  .card-grid{grid-template-columns:repeat(2,1fr);}
+  .proj-grid{grid-template-columns:1fr;}
+  .tools-grid{grid-template-columns:repeat(2,1fr);}
+  .why-grid{grid-template-columns:1fr;}
+}
+@media(max-width:720px){
+  nav{
+    top:auto;bottom:16px;left:16px;right:16px;transform:none;
+    justify-content:space-between;overflow-x:auto;
+  }
+  nav a{padding:8px 12px;font-size:0.78rem;}
+  section{padding:90px 6vw;}
+  .card-grid{grid-template-columns:1fr 1fr;}
+}
+@media(prefers-reduced-motion: reduce){
+  *{animation:none !important;transition:none !important;}
+}
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#home" class="active">Home</a>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#services">Services</a>
+  <a href="#projects">Work</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div class="reveal visible">
+      <div class="eyebrow"><i class="fa-solid fa-terminal"></i>&nbsp;Available for freelance work</div>
+      <h1 class="hero-name">Kalai<br><span class="gradient-text">Selvan</span></h1>
+      <div class="hero-tagline">$ <span id="typed"></span><span class="cursor"></span></div>
+      <p class="hero-desc">I'm a Computer Science Engineering student who builds scroll-stopping videos, sharp visual designs, and freelance results — turning ideas into content that performs.</p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i>Hire Me</a>
+        <a href="#" class="btn btn-ghost" id="resumeBtn"><i class="fa-solid fa-arrow-down"></i>Download Resume</a>
+      </div>
+      <div class="socials">
+        <a href="#" aria-label="Fiverr"><i class="fa-brands fa-fort-awesome"></i></a>
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <div class="terminal reveal visible">
+      <div class="terminal-bar">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="terminal-title">profile.js</span>
+      </div>
+      <div class="terminal-body">
+        <div class="ln"><span class="comment">// currently building</span></div>
+        <div class="ln"><span class="key">const</span> creator = {</div>
+        <div class="ln role">role: <span class="str">"CS Engineering Student"</span>,</div>
+        <div class="ln role">status: <span class="str">"Freelance Digital Creator"</span>,</div>
+        <div class="ln role">stack: [<span class="str">"CapCut"</span>, <span class="str">"Photoshop"</span>, <span class="str">"Canva"</span>, <span class="str">"AI Tools"</span>],</div>
+        <div class="ln role">focus: [<span class="str">"Video Editing"</span>, <span class="str">"Design"</span>, <span class="str">"Marketing"</span>]</div>
+        <div class="ln">};</div>
+      </div>
+      <div class="terminal-stats">
+        <div><div class="num">15+</div><div class="lbl">SKILLS</div></div>
+        <div><div class="num">8</div><div class="lbl">PROJECTS SHIPPED</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-photo reveal"><i class="fa-solid fa-user"></i></div>
+    <div class="reveal">
+      <div class="eyebrow">About Me</div>
+      <h2 class="section-title">Learning by day, <span class="gradient-text">creating by night.</span></h2>
+      <p style="color:var(--muted);max-width:520px;">I am a passionate Computer Science Engineering student who enjoys building digital content and helping businesses grow online. I continuously learn new skills and work on freelance projects. My goal is to become a successful freelancer and digital entrepreneur.</p>
+      <div class="stat-chips">
+        <div class="chip"><strong>15+</strong> Skills</div>
+        <div class="chip"><strong>Fiverr</strong> Freelancer</div>
+        <div class="chip"><strong>AI-Powered</strong> Creator</div>
+        <div class="chip"><strong>Always</strong> Learning</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="eyebrow reveal">Skills</div>
+  <h2 class="section-title reveal">What I bring <span class="gradient-text">to the table.</span></h2>
+  <p class="section-sub reveal">A mix of creative editing, design, and growth marketing skills — sharpened through real freelance projects.</p>
+  <div class="skills-cols">
+    <div class="skill-cat reveal">
+      <h3>Design &amp; Editing</h3>
+      <div class="skill-item"><div class="skill-head"><span>Video Editing (CapCut)</span><span>92%</span></div><div class="bar-track"><div class="bar-fill" data-w="92"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Graphic Design</span><span>88%</span></div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Logo Design</span><span>85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>YouTube Video Editing</span><span>90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Short Form Reels Editing</span><span>94%</span></div><div class="bar-track"><div class="bar-fill" data-w="94"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Adobe Photoshop (Basic)</span><span>70%</span></div><div class="bar-track"><div class="bar-fill" data-w="70"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Canva</span><span>90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+    </div>
+    <div class="skill-cat reveal">
+      <h3>AI &amp; Marketing</h3>
+      <div class="skill-item"><div class="skill-head"><span>AI Tools</span><span>88%</span></div><div class="bar-track"><div class="bar-fill" data-w="88"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Amazon Affiliate Marketing</span><span>80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Fiverr Freelancing</span><span>85%</span></div><div class="bar-track"><div class="bar-fill" data-w="85"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Lead Generation</span><span>75%</span></div><div class="bar-track"><div class="bar-fill" data-w="75"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Social Media Content Creation</span><span>90%</span></div><div class="bar-track"><div class="bar-fill" data-w="90"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Product Research</span><span>78%</span></div><div class="bar-track"><div class="bar-fill" data-w="78"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>SEO Basics</span><span>72%</span></div><div class="bar-track"><div class="bar-fill" data-w="72"></div></div></div>
+      <div class="skill-item"><div class="skill-head"><span>Copywriting</span><span>80%</span></div><div class="bar-track"><div class="bar-fill" data-w="80"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="eyebrow reveal">Services</div>
+  <h2 class="section-title reveal">Ways I can <span class="gradient-text">help you grow.</span></h2>
+  <p class="section-sub reveal">From editing to full content strategy — here's what I offer freelance clients.</p>
+  <div class="card-grid">
+    <div class="glass-card reveal"><div class="card-icon"><i class="fa-solid fa-clapperboard"></i></div><h4>Video Editing</h4><p>Polished edits for brands and creators using CapCut.</p></div>
+    <div class="glass-card reveal"><div class="card-icon"><i class="fa-brands fa-youtube"></i></div><h4>YouTube Editing</h4><p>Retention-focused edits for long-form content.</p></div>
+    <div class="glass-card reveal"><div class="card-icon"><i class="fa-solid fa-bolt"></i></div><h4>Short Reel Editing</h4><p>Fast-paced Reels & Shorts built to hook viewers.</p></div>
+    <div class="glass-card reveal"><div class="card-icon"><i class="fa-solid fa-pen-nib"></i></div><h4>Logo Design</h4><p>Simple, memorable brand marks.</p></div>
+    <div class="glass-card reveal"><div class="card-icon"><i class="fa-solid fa-share-nodes"></i></div><h4>Social Media Design</h4><p>Posts, banners, and templates that stay on-brand.</p></div>
+    <div class="glass-card reveal"><div class="card-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h4>AI Sketch Art</h4><p>AI-generated sketch artwork and illustrations.</p></div>
+    <div class="glass-card reveal"><div class="card-icon"><i class="fa-solid fa-cart-shopping"></i></div><h4>Product Description Writing</h4><p>Clear, conversion-ready copy for listings.</p></div>
+    <div class="glass-card reveal"><div class="card-icon"><i class="fa-solid fa-image"></i></div><h4>Thumbnail Design</h4><p>Click-worthy thumbnails for video content.</p></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="eyebrow reveal">Featured Work</div>
+  <h2 class="section-title reveal">Projects I've <span class="gradient-text">shipped.</span></h2>
+  <p class="section-sub reveal">A look at the freelance and practice work I've built so far.</p>
+  <div class="proj-grid">
+    <div class="proj-card reveal"><div class="proj-num">01</div><div><h4>Fiverr Video & Sketch Gigs</h4><p>Created multiple Fiverr gigs for video editing and digital sketch services.</p></div></div>
+    <div class="proj-card reveal"><div class="proj-num">02</div><div><h4>Logos, Thumbnails & Banners</h4><p>Designed logos, thumbnails, banners, and social media posts for clients.</p></div></div>
+    <div class="proj-card reveal"><div class="proj-num">03</div><div><h4>CapCut Promo Videos</h4><p>Created promotional video content using CapCut for brands.</p></div></div>
+    <div class="proj-card reveal"><div class="proj-num">04</div><div><h4>Amazon Affiliate Content</h4><p>Built product descriptions for Amazon affiliate marketing.</p></div></div>
+    <div class="proj-card reveal"><div class="proj-num">05</div><div><h4>AI Sketch Art Series</h4><p>Worked on AI-generated sketch art projects.</p></div></div>
+    <div class="proj-card reveal"><div class="proj-num">06</div><div><h4>Client Portfolio Samples</h4><p>Created portfolio samples to showcase freelance work.</p></div></div>
+    <div class="proj-card reveal"><div class="proj-num">07</div><div><h4>Pinterest & Instagram Content</h4><p>Built affiliate marketing content across Pinterest and Instagram.</p></div></div>
+    <div class="proj-card reveal"><div class="proj-num">08</div><div><h4>Lead Generation Practice</h4><p>Practiced lead generation using online tools and platforms.</p></div></div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="eyebrow reveal">Achievements</div>
+  <h2 class="section-title reveal">The journey <span class="gradient-text">so far.</span></h2>
+  <p class="section-sub reveal">Every milestone that's shaped my freelance path.</p>
+  <div class="timeline">
+    <div class="tl-item reveal"><div class="tl-dot"></div><h4>Started freelancing journey on Fiverr</h4><p>Took the first step into professional freelance work.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><h4>Built multiple digital design projects</h4><p>Logos, banners, thumbnails, and social content for real clients.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><h4>Learned AI-powered content creation</h4><p>Integrated AI tools into design and editing workflows.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><h4>Created a professional client portfolio</h4><p>Packaged best work into a client-ready portfolio.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><h4>Completed numerous personal practice projects</h4><p>Kept skills sharp between client work.</p></div>
+    <div class="tl-item reveal"><div class="tl-dot"></div><h4>Consistently improving editing and design skills</h4><p>Ongoing growth — always the next skill to learn.</p></div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="eyebrow reveal">Tools I Use</div>
+  <h2 class="section-title reveal">My <span class="gradient-text">everyday toolkit.</span></h2>
+  <div class="tools-grid">
+    <div class="tool-item reveal"><i class="fa-solid fa-video"></i><span>CapCut</span></div>
+    <div class="tool-item reveal"><i class="fa-solid fa-palette"></i><span>Canva</span></div>
+    <div class="tool-item reveal"><i class="fa-brands fa-adobe"></i><span>Photoshop</span></div>
+    <div class="tool-item reveal"><i class="fa-solid fa-handshake"></i><span>Fiverr</span></div>
+    <div class="tool-item reveal"><i class="fa-brands fa-amazon"></i><span>Amazon Associates</span></div>
+    <div class="tool-item reveal"><i class="fa-brands fa-pinterest"></i><span>Pinterest</span></div>
+    <div class="tool-item reveal"><i class="fa-brands fa-instagram"></i><span>Instagram</span></div>
+    <div class="tool-item reveal"><i class="fa-solid fa-robot"></i><span>AI Tools</span></div>
+  </div>
+</section>
+
+<!-- WHY HIRE ME -->
+<section id="why">
+  <div class="eyebrow reveal">Why Hire Me</div>
+  <h2 class="section-title reveal">Reasons clients <span class="gradient-text">come back.</span></h2>
+  <div class="why-grid">
+    <div class="why-item reveal"><i class="fa-solid fa-circle-check"></i><span>Fast Delivery</span></div>
+    <div class="why-item reveal"><i class="fa-solid fa-circle-check"></i><span>Creative Designs</span></div>
+    <div class="why-item reveal"><i class="fa-solid fa-circle-check"></i><span>Client Satisfaction</span></div>
+    <div class="why-item reveal"><i class="fa-solid fa-circle-check"></i><span>Affordable Pricing</span></div>
+    <div class="why-item reveal"><i class="fa-solid fa-circle-check"></i><span>Professional Communication</span></div>
+    <div class="why-item reveal"><i class="fa-solid fa-circle-check"></i><span>Continuous Learning</span></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="eyebrow reveal">What Clients Say</div>
+  <h2 class="section-title reveal">Trusted by <span class="gradient-text">early clients.</span></h2>
+  <div class="testi-wrap reveal">
+    <div class="testi-card active">
+      <p class="testi-quote"><i class="fa-solid fa-quote-left"></i>Kalai turned our raw footage into a reel that actually stopped the scroll. Fast, easy to work with, and genuinely creative.</p>
+      <div class="testi-person"><div class="testi-avatar">R</div><div><strong>Ravi K.</strong><span>Small Business Owner</span></div></div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote"><i class="fa-solid fa-quote-left"></i>Needed a logo and social templates on a tight deadline — got exactly what I asked for, delivered early.</p>
+      <div class="testi-person"><div class="testi-avatar">P</div><div><strong>Priya S.</strong><span>Fiverr Client</span></div></div>
+    </div>
+    <div class="testi-card">
+      <p class="testi-quote"><i class="fa-solid fa-quote-left"></i>Great communication throughout, and the product descriptions clearly helped conversions. Will hire again.</p>
+      <div class="testi-person"><div class="testi-avatar">A</div><div><strong>Arun M.</strong><span>Amazon Affiliate Marketer</span></div></div>
+    </div>
+    <div class="testi-nav">
+      <button id="testiPrev" aria-label="Previous"><i class="fa-solid fa-arrow-left"></i></button>
+      <button id="testiNext" aria-label="Next"><i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap reveal">
+    <div class="contact-info">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's build <span class="gradient-text">something great.</span></h2>
+      <p>Have a project in mind? Send a message and I'll get back to you.</p>
+      <div class="contact-detail"><i class="fa-solid fa-envelope"></i>kalaiselvan760486@gmail.com</div>
+      <div class="contact-detail"><i class="fa-solid fa-phone"></i>+91 76048 67287</div>
+      <div class="contact-detail"><i class="fa-solid fa-location-dot"></i>Tamil Nadu, India</div>
+      <div class="contact-detail"><i class="fa-solid fa-briefcase"></i>fiverr.com/kalaiselvan</div>
+      <div class="socials" style="margin-top:20px;">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+      </div>
+    </div>
+    <form id="contactForm">
+      <input class="field" type="text" placeholder="Your name" required>
+      <input class="field" type="email" placeholder="Your email" required>
+      <textarea class="field" placeholder="Tell me about your project..." required></textarea>
+      <button type="submit" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i>Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-logo">Kalai<span class="gradient-text">.</span></div>
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#projects">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#home" class="back-top" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></a>
+  </div>
+  <p class="copyright">&copy; 2026 Kalai Selvan. All rights reserved.</p>
+</footer>
+
+<script>
+// Typing effect
+const roles = ["Computer Science Student", "Freelance Digital Creator", "Video Editor", "Graphic Designer", "Digital Marketer"];
+let ri=0, ci=0, deleting=false;
+const typedEl = document.getElementById('typed');
+function type(){
+  const word = roles[ri];
+  if(!deleting){
+    ci++;
+    typedEl.textContent = word.slice(0,ci);
+    if(ci===word.length){ deleting=true; setTimeout(type,1400); return; }
+  } else {
+    ci--;
+    typedEl.textContent = word.slice(0,ci);
+    if(ci===0){ deleting=false; ri=(ri+1)%roles.length; }
+  }
+  setTimeout(type, deleting?40:70);
+}
+type();
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      // trigger bars inside
+      e.target.querySelectorAll('.bar-fill').forEach(b=>{
+        b.style.width = b.dataset.w + '%';
+      });
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:0.15});
+revealEls.forEach(el=>io.observe(el));
+
+// Nav active state on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('#navbar a');
+window.addEventListener('scroll', ()=>{
+  let current = '';
+  sections.forEach(sec=>{
+    const top = sec.offsetTop - 160;
+    if(window.scrollY >= top) current = sec.getAttribute('id');
+  });
+  navLinks.forEach(link=>{
+    link.classList.toggle('active', link.getAttribute('href') === '#'+current);
+  });
+});
+
+// Testimonial carousel
+const cards = document.querySelectorAll('.testi-card');
+let ti = 0;
+function showTesti(i){
+  cards.forEach(c=>c.classList.remove('active'));
+  cards[i].classList.add('active');
+}
+document.getElementById('testiNext').addEventListener('click', ()=>{
+  ti = (ti+1)%cards.length; showTesti(ti);
+});
+document.getElementById('testiPrev').addEventListener('click', ()=>{
+  ti = (ti-1+cards.length)%cards.length; showTesti(ti);
+});
+
+// Contact form (demo)
+document.getElementById('contactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const btn = this.querySelector('button');
+  const original = btn.innerHTML;
+  btn.innerHTML = '<i class="fa-solid fa-check"></i> Message Sent!';
+  this.reset();
+  setTimeout(()=>{ btn.innerHTML = original; }, 2500);
+});
+
+// Resume button placeholder
+document.getElementById('resumeBtn').addEventListener('click', function(e){
+  e.preventDefault();
+  alert('Add your resume PDF link here to enable downloads.');
+});
+</script>
+</body>
+</html>
